@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <!-- fa-4x to 4x wieksza ikona, mt-5 = margin-top-5x -->
+        <i class="fas fa-film text-light fa-4x mt-5"></i>
+        <h1 class="text-light">Please sign up</h1>
+        <div>
+            <form class="form-signin" action="/register" method="post">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                <div class="form-group">
+                    <button class="btn btn-lg btn-success btn-block">Sign Up!</button>
+                </div>
+            </form>
+            <a href="/movies">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

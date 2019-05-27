@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="text-light">Edit <%= movie.name %></h1>    
+                <form action="/movies/<%= movie._id %>/?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="movie[name]" value="<%=movie.name%>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="movie[image]" value="<%=movie.image%>">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="movie[description]" value="<%=movie.description%>">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Sumbit change</button>    
+                    </div>
+                </form>
+            <a href="/movies">BACK</a>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

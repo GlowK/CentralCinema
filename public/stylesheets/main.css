@@ -1,0 +1,21 @@
+body{
+    padding-top: 70px;
+    background-color: #1a1a1d;
+}
+
+/* .jumbotron{
+    background-color: #4e4e50;
+} */
+
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.delete-form{
+    display: inline;
+}

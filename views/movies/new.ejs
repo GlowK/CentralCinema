@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="text-light">Add a movie to an offer</h1>
+                <form action="/movies" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="image" placeholder="image url">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control inputTextArea" type="text" name="description" placeholder="description">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Sumbit</button>    
+                    </div>
+                </form>
+            <a href="/movies">BACK</a>
+        </div>
+    </div>
+    
+<% include ../partials/footer %>
