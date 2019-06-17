@@ -24,11 +24,16 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); //Static links 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
-mongoose.connect("mongodb://localhost:27017/CentralCinema",{useNewUrlParser: true});
+// mongoose.connect('mongodb://username:password@host:port/database')
+// mongoose.connect("mongodb://localhost:27017/CentralCinema",{useNewUrlParser: true});
+mongoose.connect("mongodb://cinema:cinema2019@5.9.105.246:27017/CentralCinema",{useNewUrlParser: true});
+mongoose.connection.on('error', err => {
+    throw 'failed connect to MongoDB';
+  });
 mongoose.set('useFindAndModify', false); //potrzbne od uzycia findByIdAndUpdate (depricated)
 app.use(flash());
 
-// If you wanna seed DB with Pulp Fiction and user "a" PART-1
+// If you wanna seed DB with Pulp Fiction and user "a" PART-1 
 // seedDb();
 
 // ============================

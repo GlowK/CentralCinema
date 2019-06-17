@@ -25,7 +25,7 @@
                     </p>
                     <!-- jesli currentUser daje false nie idziemy dalej i sie nie wywali -->
                     <!-- currentUser pochodzi z app.js dodawany jest do kazdej strony -->
-                    <% if(currentUser && movie.author.id.equals(currentUser._id)){ %>
+                    <% if(currentUser && movie.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                         <a class="btn btn-warning" href="/movies/<%=movie._id%>/edit">Edit Movie</a>
                         <form class="delete-form" action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
                             <button  class="btn btn-danger">Delete Movie</button>
@@ -52,7 +52,7 @@
                                         <p class="card-text"><%= comment.text %></p>
                                     </div>
                                     <div class="float-right">
-                                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                        <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                                         <div class="float-right">
                                             <a href="/movies/<%= movie._id %>/comments/<%= comment._id %>/edit" class="btn btn-warning btn-sm">Edit comment</a>
                                             <form class="delete-form" action="/movies/<%=movie._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">

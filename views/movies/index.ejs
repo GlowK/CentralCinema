@@ -7,7 +7,10 @@
             <h1>Welcome to Central Cinema</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, voluptate.</p>
             <p>
-                <a class="btn btn-outline-primary btn-lg" href="/movies/new">Add new movie</a>
+                <!-- Weryfikacja czy user jest adminem (zmiana tylko recznie w mongo) -->
+                <% if(currentUser && currentUser.isAdmin) { %>
+                    <a class="btn btn-outline-primary btn-lg" href="/movies/new">Add new movie</a>
+                <% } %>        
             </p>
         </div>  
     </header>
