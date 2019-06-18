@@ -14,8 +14,10 @@ const methodOverride = require("method-override");
 // Requring routes 
 // ============================
 var commentRoutes       = require("./routes/comments");
+var reviewRoutes        = require("./routes/reviews");
 var moviesRoutes        = require("./routes/movies");
 var authRoutes          = require("./routes/auth");
+
 
 // ============================
 // Initial setups 
@@ -74,7 +76,9 @@ app.use((req, res, next)=>{
 // ============================
 app.use("/", authRoutes);
 app.use("/movies/:id/comments", commentRoutes);
+app.use("/movies/:id/reviews", reviewRoutes);
 app.use("/movies", moviesRoutes);
+
 
 // ============================
 // Listen init

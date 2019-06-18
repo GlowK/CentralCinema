@@ -64,7 +64,10 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 // SHOW - more information about the movie
 // ============================
 router.get("/:id", (req,res) => {
-    Movie.findById(req.params.id).populate("comments").exec((err, foundMovie) =>{
+    Movie.findById(req.params.id).populate("comments").populate({
+        path: "reviews",
+        options:{sort: {createdAt: -1}}
+    }).exec((err, foundMovie) =>{
         if(err){
             console.log(err);
         }else{
