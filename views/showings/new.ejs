@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="text-light">Add new showing:</h1>
+                <form action="/movies/<%= movie._id %>/showing" method="post">
+                    <div class="form-group">
+                        <h3 class="checked">Chose cinema hall:</h3>
+                        <div>
+                            <input type="radio" class="form-group-input" id="blueHall" name="cinemaHallName" value="blue" checked>
+                            <label class="form-check-label" for="blueHall">Blue - 40ppl</label>
+                            <input type="radio" class="form-group-input" id="greenHall" name="cinemaHallName" value="green">
+                            <label class="form-check-label" for="greenHall">Green - 20ppl</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h3 class="checked">Chose time of screening:</h3>
+                        <div>
+                            <input type="radio" class="form-group-input" id="midday" name="showingHour" value="MIDDAY" checked>
+                            <label class="form-check-label" for="midday">midday</label>
+                            <input type="radio" class="form-group-input" id="evening" name="showingHour" value="EVENING">
+                            <label class="form-check-label" for="evening">evening</label>
+                            <input type="radio" class="form-group-input" id="morning" name="showingHour" value="MORNING">
+                            <label class="form-check-label" for="morning">morning</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Sumbit</button>    
+                    </div>
+                </form>
+            <a href="/movies/<%= movie._id %>/showing">BACK</a>
+        </div>
+    </div>
+    
+<% include ../partials/footer %>
