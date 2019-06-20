@@ -50,7 +50,7 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 });
 
 // ============================
-//  Reviews- CREATE
+//  Showing - CREATE
 // ============================
 // przydal by sie middleware.checkSHOWINGExistance,
 router.post("/", middleware.isLoggedIn, function (req, res) {
@@ -108,23 +108,22 @@ router.get("/:id", middleware.isLoggedIn, (req,res) => {
 });
 
 // ============================
-// SHOWING - UPDATE NIEDOKONCZONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO
+// SHOWING - UPDATE  TODO
 // ============================
-router.put("/:id", middleware.isLoggedIn, (req, res) => {
-    Showing.findByIdAndUpdate(req.params.id, req.body.showing, (err, updatedShowing) =>{
-        if(err){
-            res.redirect("back");
-        }else{
-            
-            CinemaHall.findByIdAndUpdate(updatedShowing._id, (err, updatedCinemaHall) =>{
-                if(err){
-                    res.redirect("back");
-                }
-                res.redirect("/showings/" + req.params.id);
-            });
-        }
-    })
-});
+// router.put("/:id", middleware.isLoggedIn, (req, res) => {
+//     Showing.findByIdAndUpdate(req.params.id, req.body.showing, (err, updatedShowing) =>{
+//         if(err){
+//             res.redirect("back");
+//         }else{
+//             CinemaHall.findByIdAndUpdate(updatedShowing._id, (err, updatedCinemaHall) =>{
+//                 if(err){
+//                     res.redirect("back");
+//                 }
+//                 res.redirect("/movies/"+ updatedShowing.movie._id +"/showing/" + req.params.id);
+//             });
+//         }
+//     })
+// });
 
 function createSeatsAtHall(chosenCinemaHallName){
     var seatCounter = [];
@@ -146,15 +145,6 @@ function createSeatsAtHall(chosenCinemaHallName){
             isReserved: false
         });
     }
-
-    // for( i = 0; i < numberOfRows; i++){
-    //     for(j = 0; j < numberOfSeatsInRow; j++){
-    //         seatCounter[i+j].rowNumber = (i%numberOfRows)+1;
-    //         seatCounter[i+j].seatNumber = (j%numberOfSeatsInRow)+1;
-    //         // console.log(seatCounter[i].rowNumber);
-    //         // console.log(seatCounter[i].seatNumber);
-    //     }
-    // };
 
     var seatCount = 0;
     for(i = 0;i < numberOfRows;i++)

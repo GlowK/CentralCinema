@@ -30,7 +30,7 @@
                     <h4 class="card-title"><a><%= showing.movie.name %></a></h4>
                     <hr>
                     <h5 class="card-title"><a>Available seats:</a></h5>
-                    <form action="/movies/<%=showing.movie._id %>/showing/<%=showing._id%>?_method=PUT" method="post">
+                    <!-- <form action="/movies/<%=showing.movie._id %>/showing/<%=showing._id%>?_method=PUT" method="post"> -->
                         <div class="form-group">
                         <% cinemaHall.seats.forEach(function(seat){ %>
                             <% if(seat.seatNumber == 1){ %>
