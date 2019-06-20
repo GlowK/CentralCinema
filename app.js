@@ -17,7 +17,7 @@ var commentRoutes       = require("./routes/comments");
 var reviewRoutes        = require("./routes/reviews");
 var moviesRoutes        = require("./routes/movies");
 var authRoutes          = require("./routes/auth");
-var showingRoutes   = require("./routes/showings");
+var showingRoutes       = require("./routes/showings");
 
 // ============================
 // Initial setups 
@@ -84,7 +84,7 @@ app.use("/movies/:id/showing", showingRoutes);
 // ============================
 // Listen init
 // ============================
-app.listen(3000, () =>{
+app.listen(80, () =>{
     console.log("##################################");
     console.log("CentralCinema Sever is running....");
     console.log("##################################");

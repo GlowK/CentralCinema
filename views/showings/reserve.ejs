@@ -8,7 +8,8 @@
             <li class="list-group-item"><a href="/movies/<%=showing.movie._id%>">Description</a></li>
             <li class="list-group-item"> <a href="/movies/<%=showing.movie._id%>/reviews/">Reviews</a></li>
             <li class="list-group-item active">Showing</li>
-            <li class="list-group-item"><a href="/movies/<%=showing.movie._id%>/trailer>">Trailer</a></li>
+
+            <li class="list-group-item"><a href="/movies/<%=showing.movie._id%>/trailer/">Trailer</a></li>
             <% if(currentUser && currentUser.isAdmin) { %>
             <li class="list-group-item list-group-item-success"><a href="/movies/<%=showing.movie._id%>/showing/new">Create Showing</a></li>
             <% } %>
@@ -34,7 +35,9 @@
                             <!-- <p class="text-center" >Row = <%=seat.rowNumber%></p> -->
                             <p>
                         <%}%>
+
                         <button type="button" name="<%=seat._id%>" data-seatNumber="<%=seat.seatNumber%>" data-rowNumber="<%=seat.rowNumber%>" data-isReserved="<%=seat.isReserved%>" class="btn 
+
                         <% if(seat.isReserved){ %>
                             btn-outline-danger
                             <% } else{ %>
@@ -49,6 +52,7 @@
                         </button>
                         
                     <% }) %>   
+
                     <hr>
                     <a class="btn btn-success btn-lg" href="#">Reserve </a>
                 </div>

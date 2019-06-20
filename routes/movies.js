@@ -34,12 +34,13 @@ router.get("/", (req, res) =>{
 router.post("/", middleware.isLoggedIn, (req, res) => {
     var name = req.body.name;
     var image = req.body.image;
+    var trailer = req.body.trailer;
     var desc = req.body.description;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newMovie = {name: name,image: image, description: desc, author:author};
+    var newMovie = {name: name, image: image, trailer: trailer, description: desc, author:author};
     //movies.push(newMovie);
     //console.log(req.user)
     Movie.create(newMovie, (err, newlyCreatedMovie) =>{
@@ -75,6 +76,19 @@ router.get("/:id", (req,res) => {
             res.render("movies/show", {movie: foundMovie});
         }
     } )
+});
+
+// ============================
+// TRAILER - See trailer of the movie
+// ============================
+router.get("/:id/trailer", middleware.checkMovieOwnership, (req, res) => {
+    Movie.findById(req.params.id, (err, foundMovie) =>{
+        if(err){
+            console.log(err);
+        }else{
+            res.render("movies/trailer", {movie: foundMovie});  
+        }
+    });    
 });
 
 // ============================

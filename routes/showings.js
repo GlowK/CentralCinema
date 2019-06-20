@@ -14,19 +14,19 @@ router.get("/", function (req, res) {
             req.flash("error", err.message);
             return res.redirect("back");
         }
-        Showing.findOne({movie: movie}).exec((err, foundShowing) => {
-            if(err){
-                req.flash("error", err.message);
-                return res.redirect("back");
-            }
             CinemaHall.findOne({name: "blue"}).exec((err, foundCinemaHall) =>{
                 if(err){
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
-                res.render("showings/index", {movie: movie, showing: foundShowing, cinemaHall: foundCinemaHall});
-            })           
-        });
+                Showing.find({movie: movie._id}, (err, allShowings) => {
+                    if(err){
+                        req.flash("error", err.message);
+                        return res.redirect("back");
+                    }
+                    res.render("showings/index", {movie: movie, allShowings: allShowings, cinemaHall: foundCinemaHall});
+                });      
+            });           
     });
 });
 
@@ -79,6 +79,8 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
+                movie.showings.push(showing);
+                movie.save();
                 req.flash("success", "Your have created a showing.");
                 res.redirect('/movies/' + movie._id +'/showing');
             });
@@ -86,8 +88,6 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
     });
 });
 
-<<<<<<< Updated upstream
-=======
 // ============================
 // RESERVE - more information about the movie
 // ============================
@@ -109,6 +109,7 @@ router.get("/:id", middleware.isLoggedIn, (req,res) => {
     } )
 });
 
+
 // ============================
 // SHOWING - UPDATE NIEDOKONCZONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO
 // ============================
@@ -127,7 +128,6 @@ router.put("/:id", middleware.isLoggedIn, (req, res) => {
     })
 });
 
->>>>>>> Stashed changes
 function createSeatsAtHall(chosenCinemaHallName){
     var seatCounter = [];
     var numberOfRows = 5;

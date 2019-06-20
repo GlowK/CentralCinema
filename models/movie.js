@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var movieSchema = new mongoose.Schema({
    name: String,
    image: String,
+   trailer: String,
    description: String,
    author:{
       id:{
@@ -22,6 +23,12 @@ var movieSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "Review"
       }
+  ],
+  showings:[
+     {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Showing"
+     }
   ],
   rating: {
       type: Number,
