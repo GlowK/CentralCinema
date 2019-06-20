@@ -81,7 +81,7 @@ router.get("/:id", (req,res) => {
 // ============================
 // TRAILER - See trailer of the movie
 // ============================
-router.get("/:id/trailer", middleware.checkMovieOwnership, (req, res) => {
+router.get("/:id/trailer", (req, res) => {
     Movie.findById(req.params.id, (err, foundMovie) =>{
         if(err){
             console.log(err);
