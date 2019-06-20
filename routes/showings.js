@@ -103,14 +103,25 @@ function createSeatsAtHall(chosenCinemaHallName){
         });
     }
 
-    for( i = 0; i < numberOfRows; i++){
-        for(j = 0; j < numberOfSeatsInRow; j++){
-            seatCounter[i+j].rowNumber = (i%numberOfRows)+1;
-            seatCounter[i+j].seatNumber = (j%numberOfSeatsInRow)+1;
-            // console.log(seatCounter[i].rowNumber);
-            // console.log(seatCounter[i].seatNumber);
+    // for( i = 0; i < numberOfRows; i++){
+    //     for(j = 0; j < numberOfSeatsInRow; j++){
+    //         seatCounter[i+j].rowNumber = (i%numberOfRows)+1;
+    //         seatCounter[i+j].seatNumber = (j%numberOfSeatsInRow)+1;
+    //         // console.log(seatCounter[i].rowNumber);
+    //         // console.log(seatCounter[i].seatNumber);
+    //     }
+    // };
+
+    var seatCount = 0;
+    for(i = 0;i < numberOfRows;i++)
+    {
+        for(j = 0; j < numberOfSeatsInRow ; j++)
+        {
+            seatCounter[seatCount].rowNumber = i+1;
+            seatCounter[seatCount].seatNumber = j+1;
+            seatCount++;
         }
-    };
+    }
 
     return seatCounter;
 }
