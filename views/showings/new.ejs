@@ -15,14 +15,45 @@
                     </div>
                     <div class="form-group">
                         <h3 class="checked">Chose time of screening:</h3>
+                        <% var isEvening = true %>
+                        <% var isMidday = true %>
+                        <% var isMorning = true %>
+                        <% for (var value of allShowings){ %>
+                            <% if(value.showingHour === "21.00"){ %>
+                                <% isEvening = false %>
+                            <% }else if(value.showingHour === "19.00"){ %>
+                                <% isMidday = false %>
+                            <% }else if(value.showingHour === "17.00"){ %>
+                                <% isMorning = false %>
+                            <% } %>
+                        <% } %>
+
+                        <% if(isMorning){ %>
+                            <div>
+                                <input type="radio" class="form-group-input" id="midday" name="showingHour" value="17.00" checked>
+                                <label class="form-check-label" for="midday">midday</label>
+                            </div>
+                        <% } %>
+                        <% if(isMidday){ %>
                         <div>
-                            <input type="radio" class="form-group-input" id="midday" name="showingHour" value="17.00" checked>
+
+                            <input type="radio" class="form-group-input" id="midday" name="showingHour" value="MIDDAY" checked>
                             <label class="form-check-label" for="midday">midday</label>
                             <input type="radio" class="form-group-input" id="evening" name="showingHour" value="19.00">
                             <label class="form-check-label" for="evening">evening</label>
+
+                            <input type="radio" class="form-group-input" id="morning" name="showingHour" value="MORNING">
+                            <input type="radio" class="form-group-input" id="evening" name="showingHour" value="19.00">
+                            <label class="form-check-label" for="evening">evening</label>
+                        </div>
+                        <% } %>
+                        <% if(isEvening){ %>
+                        <div>
                             <input type="radio" class="form-group-input" id="morning" name="showingHour" value="21.00">
+
                             <label class="form-check-label" for="morning">morning</label>
                         </div>
+                        <% } %>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Sumbit</button>    
