@@ -10,9 +10,10 @@ var Comment   = require("./models/comment");
 
 var data = [
     {
-        name: "PulpFiction", 
-        image: "https://cdn.shopify.com/s/files/1/1416/8662/products/pulp_fiction_travolta_original_film_art_spo_2000x.jpg?v=1551893408",
-        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+        name: "Pulp Fiction", 
+        image: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg",
+        description: "The lives of two mob hitmen, a boxer, a gangster & his wife, and a pair of diner bandits intertwine in four tales of violence and redemption. ",
+        trailer: "https://www.youtube.com/watch?v=tGpTpVyI_OQ",
         author:{
             id: "5cec25534a17550c1ceed87e",
             username:"a"

@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var movieSchema = new mongoose.Schema({
    name: String,
    image: String,
+   trailer: String,
    description: String,
    author:{
       id:{
