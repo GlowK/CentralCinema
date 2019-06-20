@@ -18,14 +18,26 @@ var middleware = require("../middleware");
 router.get("/", (req, res) =>{
     // Get movies from DB
     // console.log(req.user); 
-    Movie.find({}, (err, allMovies) =>{
-        if(err){
-            console.log(err);
-        }else{
-            // Render the movies
-            res.render("movies/index", {movies: allMovies, page: "movies"});
-        }
-    }); 
+    if(req.query.search){
+        var endDateSearch = req.query.search;
+        Movie.find({endDate: {$gte:endDateSearch}}, (err, allMovies) =>{
+            if(err){
+                console.log(err);
+            }else{
+                // Render the movies
+                res.render("movies/index", {movies: allMovies, page: "movies"});
+            }
+        });
+    }else{
+        Movie.find({}, (err, allMovies) =>{
+            if(err){
+                console.log(err);
+            }else{
+                // Render the movies
+                res.render("movies/index", {movies: allMovies, page: "movies"});
+            }
+        }); 
+    }
 });
 
 // ============================

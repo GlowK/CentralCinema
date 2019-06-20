@@ -33,7 +33,19 @@ var movieSchema = new mongoose.Schema({
   rating: {
       type: Number,
       default: 0
+  },
+  startDate:{
+     type: Date, default: Date()
+  },
+  endDate:{
+     type: Date, default: addDays(Date(), 3)
   }
 });
  
 module.exports = mongoose.model("Movie", movieSchema);
+
+function addDays(date, days) {
+   var result = new Date(date);
+   result.setDate(result.getDate() + days);
+   return result;
+ }

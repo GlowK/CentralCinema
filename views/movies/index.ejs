@@ -2,7 +2,7 @@
 <!-- 
     Main page
  -->
-    <header class="jumbotron">
+    <header class="jumbotron mb-2">
         <div class="container">
             <h1>Welcome to Central Cinema</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, voluptate.</p>
@@ -14,6 +14,38 @@
             </p>
         </div>  
     </header>
+    <% var today = new Date() %>
+    <% var todayPlusOne = new Date() %>
+    <% todayPlusOne.setDate(today.getDate()+1) %>
+    <% var todayPlusTwo = new Date() %>
+    <% todayPlusTwo.setDate(today.getDate()+2) %>
+    <% var todayPlutThree = new Date() %>
+    <% todayPlutThree.setDate(today.getDate()+3) %>
+    <% var todayPlusFour = new Date() %>
+    <% todayPlusFour.setDate(today.getDate()+4) %>
+    
+
+    <div class="row text-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 mb-4">
+            <div class="card border-0">
+                <div class="card-body d-flex">
+                    <form class="flex-fill" action="/movies" method="GET" name="form1" id="form1">
+                        <a class="btn btn-outline-danger btn-lg flex-fill" href="/movies" > All avilable movies </a>
+                        <button class="btn btn-outline-info btn-lg flex-fill" id="submit" name="search" type="submit" value="<%= today %>"> <%= new Date().getDate() %>.<%= today.getMonth()+1 %> </button>
+                        <button class="btn btn-outline-info btn-lg flex-fill" id="submit" name="search" type="submit" value="<%= todayPlusOne %>"> <%= new Date().getDate()+1 %>.<%= todayPlusOne.getMonth()+1 %> </button>
+                        <button class="btn btn-outline-info btn-lg flex-fill" id="submit" name="search" type="submit" value="<%= todayPlusTwo %>"> <%= new Date().getDate()+2 %>.<%= todayPlusTwo.getMonth()+1 %> </button>
+                        <button class="btn btn-outline-info btn-lg flex-fill" id="submit" name="search" type="submit" value="<%= todayPlutThree %>"> <%= new Date().getDate()+3 %>.<%= todayPlutThree.getMonth()+1 %> </button>
+                        <button class="btn btn-outline-info btn-lg flex-fill" id="submit" name="search" type="submit" value="<%= todayPlusFour %>"> <%= new Date().getDate()+4 %>.<%= todayPlusFour.getMonth()+1 %> </button>
+                    </form>
+                    <!-- <button class="btn btn-outline-info btn-lg flex-fill" href="#"><%= new Date().getDate() %>.<%= new Date().getMonth() %></button>
+                    <button class="btn btn-outline-info btn-lg flex-fill" href="#"><%= new Date().getDate()+1 %>.<%= new Date().getMonth() %></button>
+                    <button class="btn btn-outline-info btn-lg flex-fill" href="#"><%= new Date().getDate()+2 %>.<%= new Date().getMonth() %></button>
+                    <button class="btn btn-outline-info btn-lg flex-fill" href="#"><%= new Date().getDate()+3 %>.<%= new Date().getMonth() %></button> -->
+                    <!-- <button class="btn btn-outline-info btn-lg flex-fill" href="#"><%= new Date().getDate()+4 %>.<%= new Date().getMonth() %></button> -->
+                </div>
+            </div>
+        </div>
+    </div>
                             
     <div class="row text-center">
         <% movies.forEach((movie) => { %>
