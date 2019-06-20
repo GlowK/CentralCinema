@@ -17,7 +17,7 @@ var commentRoutes       = require("./routes/comments");
 var reviewRoutes        = require("./routes/reviews");
 var moviesRoutes        = require("./routes/movies");
 var authRoutes          = require("./routes/auth");
-
+var showingRoutes   = require("./routes/showings");
 
 // ============================
 // Initial setups 
@@ -78,6 +78,7 @@ app.use("/", authRoutes);
 app.use("/movies/:id/comments", commentRoutes);
 app.use("/movies/:id/reviews", reviewRoutes);
 app.use("/movies", moviesRoutes);
+app.use("/movies/:id/showing", showingRoutes);
 
 
 // ============================
