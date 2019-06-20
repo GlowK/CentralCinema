@@ -39,9 +39,13 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
             req.flash("error", err.message);
             return res.redirect("back");
         }
-        
-        res.render("showings/new", {movie: movie});
-
+        Showing.find({movie: movie._id}, (err, allShowings) => {
+            if(err){
+                req.flash("error", err.message);
+                return res.redirect("back");
+            }
+            res.render("showings/new", {movie: movie, allShowings: allShowings});
+        });    
     });
 });
 
@@ -82,6 +86,48 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
     });
 });
 
+<<<<<<< Updated upstream
+=======
+// ============================
+// RESERVE - more information about the movie
+// ============================
+router.get("/:id", middleware.isLoggedIn, (req,res) => {
+    Showing.findById(req.params.id).exec((err, foundShowing) =>{
+        if(err){
+            console.log(err);
+        }else{
+            //console.log(foundMovie);
+            CinemaHall.findById(foundShowing.cinemaHall._id).exec((err, foundCinema) => {
+                if(err){
+                console.log(err);
+                }else{
+                    res.render("showings/reserve" , {showing: foundShowing, cinemaHall: foundCinema});
+                }
+            })
+            
+        }
+    } )
+});
+
+// ============================
+// SHOWING - UPDATE NIEDOKONCZONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO
+// ============================
+router.put("/:id", middleware.isLoggedIn, (req, res) => {
+    Showing.findByIdAndUpdate(req.params.id, req.body.showing, (err, updatedShowing) =>{
+        if(err){
+            res.redirect("back");
+        }else{
+            CinemaHall.findByIdAndUpdate(updatedShowing._id, (err, updatedCinemaHall) =>{
+                if(err){
+                    res.redirect("back");
+                }
+                res.redirect("/showings/" + req.params.id);
+            });
+        }
+    })
+});
+
+>>>>>>> Stashed changes
 function createSeatsAtHall(chosenCinemaHallName){
     var seatCounter = [];
     var numberOfRows = 5;

@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <!-- <p class="lead">CentralCinema</p> -->
+        <div class="list-group">
+            <li class="list-group-item"><a href="/movies/<%=showing.movie._id%>">Description</a></li>
+            <li class="list-group-item"> <a href="/movies/<%=showing.movie._id%>/reviews/">Reviews</a></li>
+            <li class="list-group-item active">Showing</li>
+            <li class="list-group-item"><a href="/movies/<%=showing.movie._id%>/trailer>">Trailer</a></li>
+            <% if(currentUser && currentUser.isAdmin) { %>
+            <li class="list-group-item list-group-item-success"><a href="/movies/<%=showing.movie._id%>/showing/new">Create Showing</a></li>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+            <% if( showing.cinemaHall == null) { %>
+                <h5>
+                    <em class="checked">No showings yet.</em>
+                </h5>
+            <% } else { %>
+
+            <div class="card mb-3 text-center">
+                <div class="card-body">
+                        <a class="btn btn-success disabled" href="#"><%= showing.showingHour %> </a>
+                        <a class="btn btn-primary disabled" href="#">CinemaHall: <%= cinemaHall.name %> </a>
+                    <h4 class="card-title"><a><%= showing.movie.name %></a></h4>
+                    <hr>
+                    <h5 class="card-title"><a>Available seats:</a></h5>
+                    <% cinemaHall.seats.forEach(function(seat){ %>
+                        <% if(seat.seatNumber == 1){ %>
+                            <!-- <p class="text-center" >Row = <%=seat.rowNumber%></p> -->
+                            <p>
+                        <%}%>
+                        <button type="button" name="<%=seat._id%>" data-seatNumber="<%=seat.seatNumber%>" data-rowNumber="<%=seat.rowNumber%>" data-isReserved="<%=seat.isReserved%>" class="btn 
+                        <% if(seat.isReserved){ %>
+                            btn-outline-danger
+                            <% } else{ %>
+                            btn-outline-primary
+                            <% } %>
+                            btn-lg" data-toggle="button" aria-pressed="false"
+                            <% if(seat.isReserved){ %>
+                                disabled
+                                <% } %>
+                            >
+                            <%= seat.rowNumber %>.<%= seat.seatNumber %>
+                        </button>
+                        
+                    <% }) %>   
+                    <hr>
+                    <a class="btn btn-success btn-lg" href="#">Reserve </a>
+                </div>
+            </div>
+            <% } %>
+            
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+        <div class="col-md-9">
+                <% if( showing.cinemaHall == null) { %>
+                    <h5>
+                        <em class="checked">No showings yet.</em>
+                    </h5>
+                <% } else { %>
+        
+                <div class="card mb-3">
+                    <div class="card-body">
+                            <h4 class="card-title"><a>Legend:</a></h4>
+                            <hr>
+                            <a class="btn btn-outline-primary" href="#">Available </a>
+                            <a class="btn btn-outline-danger disabled" href="#">Reserved </a>
+                    </div>
+                </div>
+                <% } %>      
+        </div>
+</div>
+
+    
+<% include ../partials/footer %>

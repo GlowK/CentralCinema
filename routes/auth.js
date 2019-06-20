@@ -60,7 +60,8 @@ router.get("/login", (req, res) => {
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/movies",
+        // successRedirect: "/movies",
+        successReturnToOrRedirect: "/movies",
         failureRedirect: "/login"
     }),
         (req, res) => {
