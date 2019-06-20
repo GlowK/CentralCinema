@@ -23,6 +23,12 @@ var movieSchema = new mongoose.Schema({
           ref: "Review"
       }
   ],
+  showings:[
+     {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Showing"
+     }
+  ],
   rating: {
       type: Number,
       default: 0

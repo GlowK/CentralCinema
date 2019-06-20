@@ -1,16 +1,9 @@
 
 var mongoose = require("mongoose");
 
-const screening = {
-    MIDDAY: "midday",
-    EVENING: "evening",
-    NIGH: "night"
-}
 
 var showingSchema = new mongoose.Schema({
-    showingHour: {
-        type: screening,
-    },
+    showingHour: String,
     movie: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Movie"

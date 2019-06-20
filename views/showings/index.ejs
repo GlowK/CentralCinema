@@ -28,8 +28,12 @@
                         <h4 class="card-title"><a><%= movie.name %></a></h4>
                         <hr>
                         <h5 class="card-title"><a>Chose time of screening:</a></h5>
-                        <a class="btn btn-success" href="/movies/<%= movie._id%>/showing/<%= showing._id %>"><%= showing.showingHour %> </a>
-                        <a class="btn btn-primary disabled" href="#">CinemaHall: <%= cinemaHall.name %> </a>
+                        <% allShowings.forEach(function(showing){ %>
+                            <p>
+                                <a class="btn btn-success" href="/movies/<%= movie._id%>/showing/<%= showing._id %>"><%= showing.showingHour %></a>
+                                <a class="btn btn-primary disabled" href="#">CinemaHall: <%= cinemaHall.name %> </a>
+                            </p>
+                        <%})%>
                     </div>
                 </div>
                 <% } %>

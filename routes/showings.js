@@ -14,19 +14,19 @@ router.get("/", function (req, res) {
             req.flash("error", err.message);
             return res.redirect("back");
         }
-        Showing.findOne({movie: movie}).exec((err, foundShowing) => {
-            if(err){
-                req.flash("error", err.message);
-                return res.redirect("back");
-            }
             CinemaHall.findOne({name: "blue"}).exec((err, foundCinemaHall) =>{
                 if(err){
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
-                res.render("showings/index", {movie: movie, showing: foundShowing, cinemaHall: foundCinemaHall});
-            })           
-        });
+                Showing.find({movie: movie._id}, (err, allShowings) => {
+                    if(err){
+                        req.flash("error", err.message);
+                        return res.redirect("back");
+                    }
+                    res.render("showings/index", {movie: movie, allShowings: allShowings, cinemaHall: foundCinemaHall});
+                });      
+            });           
     });
 });
 
@@ -75,11 +75,34 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
+                movie.showings.push(showing);
+                movie.save();
                 req.flash("success", "Your have created a showing.");
                 res.redirect('/movies/' + movie._id +'/showing');
             });
         })
     });
+});
+
+// ============================
+// RESERVE - more information about the movie
+// ============================
+router.get("/:id", (req,res) => {
+    Showing.findById(req.params.id).exec((err, foundShowing) =>{
+        if(err){
+            console.log(err);
+        }else{
+            //console.log(foundMovie);
+            CinemaHall.findById(foundShowing.cinemaHall._id).exec((err, foundCinema) => {
+                if(err){
+                console.log(err);
+                }else{
+                    res.render("showings/reserve" , {showing: foundShowing, cinemaHall: foundCinema});
+                }
+            })
+            
+        }
+    } )
 });
 
 function createSeatsAtHall(chosenCinemaHallName){
