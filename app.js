@@ -6,6 +6,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const locus = require('locus');
 
 // If you wanna seed DB with Pulp Fiction and user "a" PART-1
 // const seedDb = require("./seeds");

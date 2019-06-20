@@ -30,31 +30,36 @@
                     <h4 class="card-title"><a><%= showing.movie.name %></a></h4>
                     <hr>
                     <h5 class="card-title"><a>Available seats:</a></h5>
-                    <% cinemaHall.seats.forEach(function(seat){ %>
-                        <% if(seat.seatNumber == 1){ %>
-                            <!-- <p class="text-center" >Row = <%=seat.rowNumber%></p> -->
-                            <p>
-                        <%}%>
+                    <form action="/movies/<%=showing.movie._id %>/showing/<%=showing._id%>?_method=PUT" method="post">
+                        <div class="form-group">
+                        <% cinemaHall.seats.forEach(function(seat){ %>
+                            <% if(seat.seatNumber == 1){ %>
+                                <!-- <p class="text-center" >Row = <%=seat.rowNumber%></p> -->
+                                <p>
+                            <%}%>
 
-                        <button type="button" name="<%=seat._id%>" data-seatNumber="<%=seat.seatNumber%>" data-rowNumber="<%=seat.rowNumber%>" data-isReserved="<%=seat.isReserved%>" class="btn 
+                            <button type="button" name="<%=seat._id%>" data-seatNumber="<%=seat.seatNumber%>" data-rowNumber="<%=seat.rowNumber%>" data-isReserved="<%=seat.isReserved%>" class="btn 
 
-                        <% if(seat.isReserved){ %>
-                            btn-outline-danger
-                            <% } else{ %>
-                            btn-outline-primary
-                            <% } %>
-                            btn-lg" data-toggle="button" aria-pressed="false"
                             <% if(seat.isReserved){ %>
-                                disabled
+                                btn-outline-danger
+                                <% } else{ %>
+                                btn-outline-primary
                                 <% } %>
-                            >
-                            <%= seat.rowNumber %>.<%= seat.seatNumber %>
-                        </button>
-                        
-                    <% }) %>   
-
-                    <hr>
-                    <a class="btn btn-success btn-lg" href="#">Reserve </a>
+                                btn-lg" data-toggle="button" aria-pressed="false"
+                                <% if(seat.isReserved){ %>
+                                    disabled
+                                    <% } %>
+                                >
+                                <%= seat.rowNumber %>.<%= seat.seatNumber %>
+                            </button>
+                            
+                        <% }) %>   
+                        </div>    
+                        <hr>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-lg" type="submit" href="#">Reserve </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <% } %>

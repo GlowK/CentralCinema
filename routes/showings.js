@@ -79,8 +79,6 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     req.flash("error", err.message);
                     return res.redirect("back");
                 }
-                movie.showings.push(showing);
-                movie.save();
                 req.flash("success", "Your have created a showing.");
                 res.redirect('/movies/' + movie._id +'/showing');
             });
@@ -109,7 +107,6 @@ router.get("/:id", middleware.isLoggedIn, (req,res) => {
     } )
 });
 
-
 // ============================
 // SHOWING - UPDATE NIEDOKONCZONE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TODO
 // ============================
@@ -118,6 +115,7 @@ router.put("/:id", middleware.isLoggedIn, (req, res) => {
         if(err){
             res.redirect("back");
         }else{
+            
             CinemaHall.findByIdAndUpdate(updatedShowing._id, (err, updatedCinemaHall) =>{
                 if(err){
                     res.redirect("back");
