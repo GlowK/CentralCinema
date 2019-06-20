@@ -84,7 +84,7 @@ app.use("/movies/:id/showing", showingRoutes);
 // ============================
 // Listen init
 // ============================
-app.listen(3000, () =>{
+app.listen(80, () =>{
     console.log("##################################");
     console.log("CentralCinema Sever is running....");
     console.log("##################################");
