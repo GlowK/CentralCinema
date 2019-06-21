@@ -11,7 +11,6 @@ middlewareObj.checkMovieOwnership = function(req, res, next) {
                 req.flash("error", "Movie not found.");
                 res.redirect("back");
             }else{
-                //does user own this movie?
                 //Sprawdzamy czy autor jest taki sam jak zalogowany user lub admin
                 if(foundMovie.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();
@@ -33,7 +32,6 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
             if(err){
                 res.redirect("back");
             }else{
-                //does user own this movie?
                 //Sprawdzamy czy autor jest taki sam jak zalogowany user lub admin
                 if(foundComment.author.id.equals(req.user._id) || req.user.isAdmin){
                     next();

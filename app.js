@@ -6,6 +6,12 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const moment = require("moment");
+
+// ============================
+// One line required for Moment to be operable in EJS files
+// ============================
+app.locals.moment = moment;
 
 // If you wanna seed DB with Pulp Fiction and user "a" PART-1
 // const seedDb = require("./seeds");
@@ -35,7 +41,7 @@ mongoose.connection.on('error', err => {
 mongoose.set('useFindAndModify', false); //potrzbne od uzycia findByIdAndUpdate (depricated)
 app.use(flash());
 
-// If you wanna seed DB with Pulp Fiction and user "a" PART-1 
+// If you wanna seed DB with Pulp Fiction and user "a" PART-2 
 // seedDb();
 
 // ============================

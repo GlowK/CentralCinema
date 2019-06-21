@@ -5,10 +5,10 @@
             <h1 class="text-light">Add a movie to an offer</h1>
                 <form action="/movies" method="post">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="name" placeholder="name">
+                        <input class="form-control" type="text" name="name" placeholder="name" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="image" placeholder="image url">
+                        <input class="form-control" type="text" name="image" placeholder="image url" required>
                     </div>
                     <div class="form-group">
                             <input class="form-control" type="text" name="trailer" placeholder="trailer YouTube ID">
@@ -17,6 +17,15 @@
                         <input class="form-control inputTextArea" type="text" name="description" placeholder="description">
                     </div>
                     <div class="form-group">
+                            <P class="checked"> First date of screening: </P>
+                        <input class="form-control" type="date" name="startDate">
+                    </div>
+                    <div class="form-group">
+                            <P class="checked"> Last date of screening: </P>
+                        <input class="form-control" type="date" name="endDate" required>
+                    </div>
+                    <div class="form-group">
+                        
                         <button class="btn btn-lg btn-primary btn-block" type="submit" class="btn btn-primary">Sumbit</button>    
                     </div>
                 </form>

@@ -48,11 +48,13 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     var image = req.body.image;
     var trailer = req.body.trailer;
     var desc = req.body.description;
+    var endDate = req.body.endDate;
+    var startDate = req.body.startDate;
     var author = {
         id: req.user._id,
         username: req.user.username
     }
-    var newMovie = {name: name, image: image, trailer: trailer, description: desc, author:author};
+    var newMovie = {name: name, image: image, trailer: trailer, description: desc, author:author, startDate:startDate, endDate:endDate};
     //movies.push(newMovie);
     //console.log(req.user)
     Movie.create(newMovie, (err, newlyCreatedMovie) =>{
