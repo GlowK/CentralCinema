@@ -130,14 +130,6 @@ function createSeatsAtHall(chosenCinemaHallName){
     var numberOfRows = 5;
     var numberOfSeatsInRow = 8;
 
-    // if(chosenCinemaHallName === "blue"){
-    //     numberOfRows = 5;
-    //     numberOfSeatsInRow = 8;
-    // }else{
-    //     numberOfRows = 5;
-    //     numberOfSeatsInRow = 4;
-    // }
-
     for( i = 0; i<(numberOfRows*numberOfSeatsInRow); i++){
         seatCounter.push({
             rowNumber: 0,

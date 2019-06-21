@@ -10,7 +10,7 @@ var middleware = require("../middleware");
 router.get("/", function (req, res) {
     Movie.findById(req.params.id).populate({
         path: "reviews",
-        options: {sort: {createdAt: -1}} // sorting the populated reviews array to show the latest first
+        options: {sort: {createdAt: -1}} // sortowanie od najnowszego na poczatku
     }).exec(function (err, movie) {
         if (err || !movie) {
             req.flash("error", err.message);
@@ -21,10 +21,9 @@ router.get("/", function (req, res) {
 });
 
 // ============================
-//  Reviews - NEW
+//  Reviews - NEW (tylko jedno review na usera jest dostepne)
 // ===========================
 router.get("/new", middleware.isLoggedIn, middleware.checkReviewExistence, function (req, res) {
-    // middleware.checkReviewExistence checks if a user already reviewed the movie, only one review per user is allowed
     Movie.findById(req.params.id, function (err, movie) {
         if (err) {
             req.flash("error", err.message);

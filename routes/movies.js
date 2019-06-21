@@ -122,12 +122,6 @@ router.get("/:id/edit", middleware.checkMovieOwnership, (req, res) => {
 // UPDATE
 // ============================
 router.put("/:id", middleware.checkMovieOwnership, (req, res) =>{
-    //find and update the correct movie
-    // var data = {
-    //     name: req.body.name,
-    //     image: req.body.image,
-    //     description: req.body.description
-    // };
     Movie.findByIdAndUpdate(req.params.id, req.body.movie , (err, updatedMovie) =>{
         if(err){
             res.redirect("/movies")

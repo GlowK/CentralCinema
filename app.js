@@ -13,9 +13,6 @@ const moment = require("moment");
 // ============================
 app.locals.moment = moment;
 
-// If you wanna seed DB with Pulp Fiction and user "a" PART-1
-// const seedDb = require("./seeds");
-
 // ============================
 // Requring routes 
 // ============================
@@ -41,8 +38,6 @@ mongoose.connection.on('error', err => {
 mongoose.set('useFindAndModify', false); //potrzbne od uzycia findByIdAndUpdate (depricated)
 app.use(flash());
 
-// If you wanna seed DB with Pulp Fiction and user "a" PART-2 
-// seedDb();
 
 // ============================
 // Models

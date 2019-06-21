@@ -4,6 +4,10 @@ var Review = require("../models/review");
 
 var middlewareObj = {};
 
+// ============================
+// Sprawdzenie kto stworzyl dany film
+// i czy ma prawa do edycji
+// ============================
 middlewareObj.checkMovieOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         Movie.findById(req.params.id, (err, foundMovie) =>{
@@ -26,6 +30,9 @@ middlewareObj.checkMovieOwnership = function(req, res, next) {
     } 
 }
 
+// ============================
+// Sprawdzenie kto stworzyl dany koementarz
+// ============================
 middlewareObj.checkCommentOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, (err, foundComment) =>{

@@ -3,7 +3,6 @@
     <div class="row">
 
         <div class="col-md-3">
-            <!-- <p class="lead">CentralCinema</p> -->
             <div class="list-group">
                 <li class="list-group-item"><a href="/movies/<%=movie._id%>">Description</a></li>
                 <li class="list-group-item active"> Reviews</a></li>
@@ -15,7 +14,6 @@
         <div class="col-md-9">
 
             <div class="card mb-3">
-                <!-- <img class="card-img-top" src="<%= movie.image %>"> -->
                 <div class="card-body">
                     <h4 class="card-title"><a><%= movie.name %></a></h4>
                     <hr>
@@ -23,14 +21,6 @@
                     <p>
                         <em>Submitted by: <a href="/user/<%= movie.author.id %>"><%= movie.author.username %></a></em>
                     </p>
-                    <!-- jesli currentUser daje false nie idziemy dalej i sie nie wywali -->
-                    <!-- currentUser pochodzi z app.js dodawany jest do kazdej strony -->
-                    <!-- <% if(currentUser && movie.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-                        <a class="btn btn-warning" href="/movies/<%=movie._id%>/edit">Edit Movie</a>
-                        <form class="delete-form" action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
-                            <button  class="btn btn-danger">Delete Movie</button>
-                        </form>
-                    <%} %> -->
                     <% if(movie.rating === 0) { %>
                         <h5>
                             <em>No reviews yet.</em>
@@ -80,11 +70,11 @@
                                         <%} %>
                                         </div>
 
-                                    </div>
-                                </div>    
+                                </div>
+                            </div>    
                         <% }) %>
-                </div>
-        </div>    
+                        </div>
+                    </div>    
     </div>
     
 <% include ../partials/footer %>

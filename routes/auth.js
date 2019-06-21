@@ -13,6 +13,7 @@ var Comment = require("../models/comment");
 // ============================
 // ROUTES
 // ============================
+
 // ============================
 // ROOT ROUTE
 // ============================
@@ -65,7 +66,6 @@ router.get("/login", (req, res) => {
 // LOGIN FORM LOGIC
 // app.post("/page", middleware, callback)
 // ============================
-
 router.post("/login", passport.authenticate("local", 
     {
         // successRedirect: "/movies",
@@ -88,7 +88,6 @@ router.get("/logout", (req, res) =>{
 // ============================
 // USER PROFILE ROUTE
 // ============================
-
 router.get("/user/:id", (req, res) =>{
     User.findById(req.params.id, (err, foundUser) => {
         if(err){
@@ -119,7 +118,6 @@ router.put("/user/:id", (req, res) =>{
         if(err){
             res.redirect("/movies")
         }else{
-            //redirect to the just edited page
             req.flash("success", "User profile: " + updatedUser.username +" has been updated ");
             res.redirect("/movies/");
         }
