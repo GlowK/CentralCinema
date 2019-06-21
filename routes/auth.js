@@ -9,6 +9,7 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var Movie = require("../models/movie");
+var Comment = require("../models/comment");
 // ============================
 // ROUTES
 // ============================
@@ -84,7 +85,10 @@ router.get("/logout", (req, res) =>{
     res.redirect("/movies");
 })
 
-//USER PROFILE ROUTE
+// ============================
+// USER PROFILE ROUTE
+// ============================
+
 router.get("/user/:id", (req, res) =>{
     User.findById(req.params.id, (err, foundUser) => {
         if(err){
@@ -96,10 +100,31 @@ router.get("/user/:id", (req, res) =>{
               req.flash("error", {error: err.message});
               return res.redirect("/");
             }
-            res.render("user/show", {user: foundUser, movies: movies});
+            Comment.find().where('author.id').equals(foundUser._id).exec((err, foundComments) =>{
+                if(err){
+                    req.flash("error", {error: err.message});
+                    return res.redirect("/");
+                }
+                res.render("user/show", {user: foundUser, movies: movies, foundComments: foundComments});
+            });
         });
     });
-})
+});
+
+// ============================
+// UPDATE
+// ============================
+router.put("/user/:id", (req, res) =>{
+    User.findByIdAndUpdate(req.params.id, req.body.user , (err, updatedUser) =>{
+        if(err){
+            res.redirect("/movies")
+        }else{
+            //redirect to the just edited page
+            req.flash("success", "User profile: " + updatedUser.username +" has been updated ");
+            res.redirect("/movies/");
+        }
+    })
+});
 
 // ============================
 // Basic setup - export
