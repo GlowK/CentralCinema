@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+
+<!-- <div class="row">
+    <div class="col-md-4 text-center">
+        <div class="card">
+            <img src="https://cdn2.iconfinder.com/data/icons/business-management-52/96/Artboard_20-512.png">
+        </div>
+    </div>
+    <div class="col-md-8 text-center">
+            <div class="card">
+                <h1 class="card-title">User profile: <%= user.username %></h1>
+            </div>
+    </div>
+</div>
+<div class="row">
+        <div class="col-md-12 text-center">
+            <div class="card">
+                <hr>
+                <%= user %>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-md-3 card">
+            <div class="thumbnail">
+                <img src="https://cdn2.iconfinder.com/data/icons/business-management-52/96/Artboard_20-512.png">
+                <div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div>
+            </div>
+        </div>
+        <div class="col-md-9 card">
+            <h2 class="card-title">User profile: <%= user.username %></h1>
+            <hr>
+            <% if(currentUser && currentUser._id.equals(user._id) || currentUser && currentUser.isAdmin){ %>
+                <form class="form-signin" action="/register" method="post">
+                    First Name: <input class="form-control" type="text" name="firstName" placeholder=<%= user.firstName %>>
+                    Last Name: <input class="form-control" type="text" name="lastName" placeholder=<%= user.lastName %>>
+                    Email: <input class="form-control" type="email" name="email" placeholder=<%= user.email %>>
+                    Password: <input class="form-control" type="password" name="password" placeholder="New Password">
+                <div class="form-group">
+                    <button class="btn btn-lg btn-success btn-block">Change Details</button>
+                </div>
+                </form>
+            <%} else { %>
+                <ul>
+                    <li>Username: <%= user.username %></li>
+                    <li>First Name: <%= user.firstName %></li>
+                    <li>Last Name: <%= user.lastName %></li>
+                    <li>Email address: <div class="caption"><a href="mailto:<%= user.email %>"><%= user.email %></a></div></li>
+                </ul>
+            <%} %>
+            <a href="/movies" class="btn btn-secondary">Go Back</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 card">
+            <h3><%= user.username %>'s movies:</h3>
+            <ul>
+            <% movies.forEach(function(movie) { %>
+                <li><a href="/movies/<%= movie.id %>"><%= movie.name %></a></li>
+            <% }); %>
+            </ul>
+        </div>
+    </div>
+
+<% include ../partials/footer %>

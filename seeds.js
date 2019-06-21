@@ -13,7 +13,7 @@ var data = [
         name: "Pulp Fiction", 
         image: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,686,1000_AL_.jpg",
         description: "The lives of two mob hitmen, a boxer, a gangster & his wife, and a pair of diner bandits intertwine in four tales of violence and redemption. ",
-        trailer: "https://www.youtube.com/watch?v=tGpTpVyI_OQ",
+        trailer: "tGpTpVyI_OQ",
         author:{
             id: "5cec25534a17550c1ceed87e",
             username:"a"

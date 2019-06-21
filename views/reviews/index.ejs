@@ -21,7 +21,7 @@
                     <hr>
                     <p class="card-text"><%= movie.description %></p>
                     <p>
-                       <em>Submitted by: <%= movie.author.username %></em>
+                        <em>Submitted by: <a href="/user/<%= movie.author.id %>"><%= movie.author.username %></a></em>
                     </p>
                     <!-- jesli currentUser daje false nie idziemy dalej i sie nie wywali -->
                     <!-- currentUser pochodzi z app.js dodawany jest do kazdej strony -->
@@ -64,7 +64,7 @@
                                 <div class="card-body">
                                         <div class="col-md-3">
                                             <%- '<i class="fa fa-star checked"></i>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
-                                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                                            <div>Review by: <strong><a href="/user/<%= review.author.id %>"><%= review.author.username %></a></strong></div>
                                             <span><em><%= review.updatedAt.toDateString() %></em></span>
                                         </div>
                                         <div class="col-md-12">

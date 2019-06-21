@@ -21,7 +21,7 @@
                     <hr>
                     <p class="card-text"><%= movie.description %></p>
                     <p>
-                       <em>Submitted by: <%= movie.author.username %></em>
+                       <em>Submitted by: <a href="/user/<%= movie.author.id %>"><%= movie.author.username %></a></em>
                     </p>
                     <!-- jesli currentUser daje false nie idziemy dalej i sie nie wywali -->
                     <!-- currentUser pochodzi z app.js dodawany jest do kazdej strony -->
@@ -48,7 +48,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="float-left">
-                                        <p class="card-title"><strong><%= comment.author.username %></strong></p>
+                                        <p class="card-title"><strong><a href="/user/<%= comment.author.id %>"><%= comment.author.username %></a></strong></p>
                                         <p class="card-text"><%= comment.text %></p>
                                     </div>
                                     <div class="float-right">
