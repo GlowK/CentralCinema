@@ -31,7 +31,7 @@ middlewareObj.checkMovieOwnership = function(req, res, next) {
 }
 
 // ============================
-// Sprawdzenie kto stworzyl dany koementarz
+// Sprawdzenie kto stworzyl dany komentarz 
 // ============================
 middlewareObj.checkCommentOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
@@ -54,6 +54,9 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
     } 
 }
 
+// ============================
+// Sprawdzenie kto stworzyl dana recencje filmu 
+// ============================
 middlewareObj.checkReviewOwnership = function(req, res, next) {
     if(req.isAuthenticated()){
         Review.findById(req.params.review_id, function(err, foundReview){
@@ -100,6 +103,9 @@ middlewareObj.checkReviewExistence = function (req, res, next) {
     }
 };
 
+// ============================
+// Sprawdzenie zalogowania
+// ============================
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();

@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var Movie = require("../models/movie");
 var Review = require("../models/review");
 var middleware = require("../middleware");
+var assert = require('assert');
 
 // ============================
 //  Reviews- INDEX
@@ -141,9 +142,33 @@ function calculateAverage(reviews) {
     }
     var sum = 0;
     reviews.forEach(function (element) {
-        sum += element.rating;
+        calculateSum(element,sum);
     });
     return sum / reviews.length;
 }
+
+function calculateSum (a, b) {  
+    return b + a.rating;  
+  }
+
+// var testReview = {type:Review, rating:1};
+// /* testReview.rating = 1 */
+// function calculateSum (a, b) {  
+//     return b + a.rating;  
+// }
+// var expected = calculateSum(testReview, 0);
+// assert(expected === 1, 'Simple sum check');
+
+  /* var expected = add(1,2);  
+  assert( expected === 4, 'one plus two is three');   */
+
+/* var testReviews = new Review;
+var testMovies = new Movie;
+function testReviewsPopulation(a,b){
+    testReviews.rating = a + b;
+    return testReviews;
+}  
+var expected = testReviewsPopulation(1,1);
+assert (expected === 2, 'wat');   */
 
 module.exports = router;

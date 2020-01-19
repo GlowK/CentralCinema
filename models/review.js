@@ -26,8 +26,8 @@ var reviewSchema = new mongoose.Schema({
         ref: "Movie"
     }
 }, {
-    // if timestamps are set to true, mongoose assigns createdAt and updatedAt fields to your schema, the type assigned is Date.
     timestamps: true
 });
-
+ // if timestamps are set to true, mongoose assigns createdAt 
+ // and updatedAt fields to your schema, the type assigned is Date.
 module.exports = mongoose.model("Review", reviewSchema);

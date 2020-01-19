@@ -7,6 +7,13 @@ const LocalStrategy = require("passport-local");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const moment = require("moment");
+var assert = require('assert');  
+const mongodb = require ("./mongodb/mongodb.connect");
+
+// ============================
+// ? 
+// ============================
+app.use(express.json());
 
 // ============================
 // One line required for Moment to be operable in EJS files
@@ -21,6 +28,7 @@ var reviewRoutes        = require("./routes/reviews");
 var moviesRoutes        = require("./routes/movies");
 var authRoutes          = require("./routes/auth");
 var showingRoutes       = require("./routes/showings");
+var superUsers          = require("./routes/superusers");
 
 // ============================
 // Initial setups 
@@ -31,10 +39,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 // mongoose.connect('mongodb://username:password@host:port/database')
 // mongoose.connect("mongodb://localhost:27017/CentralCinema",{useNewUrlParser: true});
-mongoose.connect("mongodb://cinema:cinema2019@5.9.105.246:27017/CentralCinema",{useNewUrlParser: true});
-mongoose.connection.on('error', err => {
-    throw 'failed connect to MongoDB';
-  });
+// // mongoose.connect("mongodb://cinema:cinema2019@5.9.105.246:27017/CentralCinema",{useNewUrlParser: true});
+// mongoose.connection.on('error', err => {
+//     throw 'failed connect to MongoDB';
+//   });
+mongodb.connect();
 mongoose.set('useFindAndModify', false); //potrzbne od uzycia findByIdAndUpdate (depricated)
 app.use(flash());
 
@@ -83,10 +92,20 @@ app.use("/movies/:id/showing", showingRoutes);
 
 
 // ============================
+// Elementy dodane na potrzeby testow 
+// ============================
+app.use("/superusers", superUsers);
+
+// ============================
 // Listen init
 // ============================
-app.listen(80, () =>{
+/* app.listen(3000, () =>{
     console.log("##################################");
     console.log("CentralCinema Sever is running....");
     console.log("##################################");
 })
+ */
+// ============================
+// Elementy dodane na potrzeby testow 2 
+// ============================
+module.exports = app;

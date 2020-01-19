@@ -1,0 +1,8 @@
+{
+    "username": "TestowyUzytkownik",
+    "password": "abc",
+    "email": "test@test.com",
+    "firstName": "ImieTestowegoUzytkownika",
+    "lastName": "NaziwskoTestowegoUzytkownika",
+    "isAdmin": false
+}
