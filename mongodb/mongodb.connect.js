@@ -4,7 +4,8 @@ async function connect(){
     try{
         await mongoose.connect(
             // mongoose.connect('mongodb://username:password@host:port/database')
-            "mongodb://localhost:27017/CentralCinema",{useNewUrlParser: true}
+            "mongodb://localhost:27017/CentralCinema",
+            {useNewUrlParser: true, useUnifiedTopology: true }
         );
     }catch (err) {
         console.error("Blad polaczenia z baza danych mongodb");

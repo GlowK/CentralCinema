@@ -126,10 +126,11 @@ router.delete("/:review_id", middleware.checkReviewOwnership, function (req, res
                 req.flash("error", err.message);
                 return res.redirect("back");
             }
-            // recalculate movie average
+            // rekalkulacja raitngu dla filmu: 
             movie.rating = calculateAverage(movie.reviews);
-            //save changes
+            //zapisanie zmian
             movie.save();
+            //powiadomienie uzytkownika o akcji
             req.flash("success", "Your review was deleted successfully.");
             res.redirect("/movies/" + req.params.id);
         });
@@ -142,33 +143,13 @@ function calculateAverage(reviews) {
     }
     var sum = 0;
     reviews.forEach(function (element) {
-        calculateSum(element,sum);
+        sum = calculateSum(element.rating,sum);
     });
     return sum / reviews.length;
 }
 
 function calculateSum (a, b) {  
-    return b + a.rating;  
+    return b + a;  
   }
-
-// var testReview = {type:Review, rating:1};
-// /* testReview.rating = 1 */
-// function calculateSum (a, b) {  
-//     return b + a.rating;  
-// }
-// var expected = calculateSum(testReview, 0);
-// assert(expected === 1, 'Simple sum check');
-
-  /* var expected = add(1,2);  
-  assert( expected === 4, 'one plus two is three');   */
-
-/* var testReviews = new Review;
-var testMovies = new Movie;
-function testReviewsPopulation(a,b){
-    testReviews.rating = a + b;
-    return testReviews;
-}  
-var expected = testReviewsPopulation(1,1);
-assert (expected === 2, 'wat');   */
 
 module.exports = router;

@@ -10,7 +10,7 @@ beforeEach(() => {
     //Pozwala nam zarequestowac przykladowy request/response http ze strony www
     req = httpMocks.createRequest();
     res = httpMocks.createResponse();
-    next = null;
+    next = jest.fn();
     //Przypisujemy do naszego zapytania przyklaowe dane (mock-data) dotyczace usera,
     req.body = newUser;
 });
@@ -36,4 +36,14 @@ describe("CentralCinemaController.createNewUser", () =>{
         await CentralCinemaController.createNewUser(req, res, next);
         expect(res._getJSONData()).toStrictEqual(newUser);
     })
+
+    it("Funkcja posiada obsluge wyjatków", async () =>{
+        const errorMessage = {message: "Brak wymaganego parametru"};
+        const rejectedPromise = Promise.reject(errorMessage);
+        //Obiekt Promise reprezentuje ewentualne zakończenie (lub porażkę)
+        //asynchronicznej operacji i jej wartości.
+        User.create.mockReturnValue(rejectedPromise)
+        await CentralCinemaController.createNewUser(req, res, next);
+        expect(next).toBeCalledWith(errorMessage);
+    });
 });

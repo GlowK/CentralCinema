@@ -1,8 +1,12 @@
 const User = require("../models/user");
 
 exports.createNewUser = async (req, res, next) =>{
-    const createdUser = await User.create(req.body);
-    res.status(201).json(createdUser);
+    try{
+        const createdUser = await User.create(req.body);
+        res.status(201).json(createdUser);
+    }catch(err){
+        next(err);
+    }
 };
 
 //Jesli uzyjemy User.create(); bez podania paramterów,

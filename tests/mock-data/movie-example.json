@@ -1,0 +1,93 @@
+{
+    "_id": {
+        "$oid": "5e22227f48d71212982e6122"
+    },
+    "comments": [],
+    "reviews": [
+        {
+            "_id": {
+                "$oid": "5e24cab7abe2093bcc531805"
+            },
+            "text": "O co to byl za film. ",
+            "rating": 5, 
+            "createdAt": {
+                "$date": {
+                    "$numberLong": "1579469495464"
+                }
+            },
+            "updatedAt": {
+                "$date": {
+                    "$numberLong": "1579469495470"
+                }
+            },
+            "__v": {
+                "$numberInt": "0"
+            },
+            "author": {
+                "id": {
+                    "$oid": "5e22221448d71212982e6121"
+                },
+                "username": "abdul"
+            },
+            "movie": {
+                "$oid": "5e22227f48d71212982e6122"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5e25fce5137d5917bcea3f80"
+            },
+            "text": "Fatalny",
+            "rating": 1,
+            "createdAt": {
+                "$date": {
+                    "$numberLong": "1579547877734"
+                }
+            },
+            "updatedAt": {
+                "$date": {
+                    "$numberLong": "1579547877741"
+                }
+            },
+            "__v": {
+                "$numberInt": "0"
+            },
+            "author": {
+                "id": {
+                    "$oid": "5e25fcd8137d5917bcea3f7f"
+                },
+                "username": "Kamil"
+            },
+            "movie": {
+                "$oid": "5e22227f48d71212982e6122"
+            }
+        }
+    ],
+    "showings": [],
+    "rating": {
+        "$numberInt": "0"
+    },
+    "startDate": {
+        "$date": {
+            "$numberLong": "1579219200000"
+        }
+    },
+    "endDate": {
+        "$date": {
+            "$numberLong": "1579392000000"
+        }
+    },
+    "name": "Test",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/71niXI3lxlL._SY679_.jpg",
+    "trailer": "nope",
+    "description": "tralala",
+    "author": {
+        "id": {
+            "$oid": "5e22221448d71212982e6121"
+        },
+        "username": "abdul"
+    },
+    "__v": {
+        "$numberInt": "4"
+    }
+}
